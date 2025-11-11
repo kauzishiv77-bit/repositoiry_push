@@ -1,0 +1,21 @@
+package com.example;
+
+import java.io.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+
+public class ClickServlet extends HttpServlet {
+    private int count = 0;
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        count++;
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>Button clicked " + count + " times!</h1>");
+        out.println("<form action='click' method='post'><button type='submit'>Click again</button></form>");
+        out.println("</body></html>");
+    }
+}
